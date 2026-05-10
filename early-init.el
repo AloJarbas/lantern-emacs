@@ -21,7 +21,8 @@
       gc-cons-threshold most-positive-fixnum
       use-short-answers t)
 
-(when (fboundp 'startup-redirect-eln-cache)
+(when (and (fboundp 'startup-redirect-eln-cache)
+           (boundp 'native-comp-eln-load-path))
   (startup-redirect-eln-cache (expand-file-name "eln-cache/" lantern-local-dir)))
 
 (dolist (fn '(menu-bar-mode tool-bar-mode scroll-bar-mode))
