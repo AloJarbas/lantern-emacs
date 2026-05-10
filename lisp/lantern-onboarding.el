@@ -15,6 +15,16 @@
                       'help-echo help
                       'action (lambda (_button) (call-interactively action))))
 
+(defun lantern/open-readme ()
+  "Open the Lantern README."
+  (interactive)
+  (find-file (expand-file-name "README.md" lantern-root-dir)))
+
+(defun lantern/open-language-guide ()
+  "Open Lantern's language-server guide."
+  (interactive)
+  (find-file (expand-file-name "docs/languages.md" lantern-root-dir)))
+
 (defun lantern/welcome ()
   "Show the Lantern welcome buffer."
   (interactive)
@@ -37,6 +47,10 @@
       (insert "\n  ")
       (lantern--welcome-button "Check environment" #'lantern/doctor "Show tools and language servers")
       (insert "\n  ")
+      (lantern--welcome-button "Read quick start" #'lantern/open-readme "Open the README inside Lantern")
+      (insert "\n  ")
+      (lantern--welcome-button "Language guide" #'lantern/open-language-guide "Open language-server notes and setup hints")
+      (insert "\n  ")
       (lantern--welcome-button "Open config" #'lantern/open-config "Browse Lantern itself")
       (insert "\n\n")
       (insert (propertize "Fast keys\n" 'face '(:weight bold)))
@@ -47,7 +61,8 @@
       (insert "  C-c l b switch buffer\n")
       (insert "  C-c l p switch project\n")
       (insert "  C-c l g Magit\n")
-      (insert "  C-.     action menu on the current candidate\n\n")
+      (insert "  C-.     action menu on the current candidate\n")
+      (insert "  q       close this screen\n\n")
       (insert (propertize "Why this feels lighter\n" 'face '(:weight bold)))
       (insert "  Lantern keeps state inside .local/, uses stock Emacs concepts where possible, and gives you a map on first run instead of assuming you already know the terrain.\n\n")
       (insert (propertize "Next practical step\n" 'face '(:weight bold)))
