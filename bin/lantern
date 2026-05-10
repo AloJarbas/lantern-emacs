@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+export LANTERN_EMACS_ROOT="$ROOT"
+
+exec emacs --quick   --eval "(setq user-emacs-directory (file-name-as-directory (getenv "LANTERN_EMACS_ROOT")))"   --load "$ROOT/early-init.el"   --load "$ROOT/init.el"   "$@"

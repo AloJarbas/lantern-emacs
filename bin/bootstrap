@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+
+emacs --batch -Q -l "$ROOT/scripts/verify.el"
+
+echo
+echo "Lantern is bootstrapped. Start it with ./bin/lantern"

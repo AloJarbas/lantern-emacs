@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Lantern first-run mockup</title>
+  <desc id="desc">A mockup of Lantern Emacs showing the welcome screen, quick actions, and the main discoverability keys.</desc>
+  <rect width="1200" height="760" fill="#1e2127"/>
+  <rect x="70" y="60" width="1060" height="640" rx="18" fill="#282c34" stroke="#3b4252" stroke-width="2"/>
+  <rect x="70" y="60" width="1060" height="42" rx="18" fill="#21252b"/>
+  <circle cx="102" cy="81" r="8" fill="#ff5f56"/>
+  <circle cx="128" cy="81" r="8" fill="#ffbd2e"/>
+  <circle cx="154" cy="81" r="8" fill="#27c93f"/>
+  <text x="600" y="87" fill="#abb2bf" font-size="18" text-anchor="middle" font-family="Menlo, Monaco, monospace">Lantern — Welcome</text>
+
+  <text x="120" y="150" fill="#e5c07b" font-size="34" font-weight="700" font-family="Inter, Helvetica, Arial, sans-serif">lantern-emacs</text>
+  <text x="120" y="186" fill="#d7dae0" font-size="22" font-family="Inter, Helvetica, Arial, sans-serif">Emacs that tries to help before it lectures.</text>
+
+  <text x="120" y="250" fill="#98c379" font-size="20" font-weight="700" font-family="Inter, Helvetica, Arial, sans-serif">Start here</text>
+  <rect x="120" y="274" width="250" height="52" rx="10" fill="#3a3f4b"/>
+  <rect x="390" y="274" width="250" height="52" rx="10" fill="#3a3f4b"/>
+  <rect x="660" y="274" width="250" height="52" rx="10" fill="#3a3f4b"/>
+  <text x="145" y="307" fill="#ffffff" font-size="18" font-family="Inter, Helvetica, Arial, sans-serif">Find a file</text>
+  <text x="415" y="307" fill="#ffffff" font-size="18" font-family="Inter, Helvetica, Arial, sans-serif">Search code</text>
+  <text x="685" y="307" fill="#ffffff" font-size="18" font-family="Inter, Helvetica, Arial, sans-serif">Open Magit</text>
+
+  <text x="120" y="390" fill="#61afef" font-size="20" font-weight="700" font-family="Inter, Helvetica, Arial, sans-serif">Fast keys</text>
+  <text x="120" y="430" fill="#d7dae0" font-size="24" font-family="Menlo, Monaco, monospace">M-SPC</text>
+  <text x="250" y="430" fill="#abb2bf" font-size="22" font-family="Inter, Helvetica, Arial, sans-serif">command palette</text>
+  <text x="120" y="468" fill="#d7dae0" font-size="24" font-family="Menlo, Monaco, monospace">C-c l</text>
+  <text x="250" y="468" fill="#abb2bf" font-size="22" font-family="Inter, Helvetica, Arial, sans-serif">Lantern menu with which-key help</text>
+  <text x="120" y="506" fill="#d7dae0" font-size="24" font-family="Menlo, Monaco, monospace">C-c l s</text>
+  <text x="250" y="506" fill="#abb2bf" font-size="22" font-family="Inter, Helvetica, Arial, sans-serif">project ripgrep search</text>
+  <text x="120" y="544" fill="#d7dae0" font-size="24" font-family="Menlo, Monaco, monospace">C-.</text>
+  <text x="250" y="544" fill="#abb2bf" font-size="22" font-family="Inter, Helvetica, Arial, sans-serif">actions on the current candidate</text>
+
+  <rect x="760" y="384" width="290" height="188" rx="14" fill="#21252b" stroke="#4b5263" stroke-width="1.5"/>
+  <text x="785" y="422" fill="#c678dd" font-size="20" font-weight="700" font-family="Inter, Helvetica, Arial, sans-serif">Why it feels lighter</text>
+  <text x="785" y="458" fill="#d7dae0" font-size="17" font-family="Inter, Helvetica, Arial, sans-serif">• welcome screen instead of a blank wall</text>
+  <text x="785" y="490" fill="#d7dae0" font-size="17" font-family="Inter, Helvetica, Arial, sans-serif">• repo-local state under .local/</text>
+  <text x="785" y="522" fill="#d7dae0" font-size="17" font-family="Inter, Helvetica, Arial, sans-serif">• modern completion out of the box</text>
+  <text x="785" y="554" fill="#d7dae0" font-size="17" font-family="Inter, Helvetica, Arial, sans-serif">• stock-ish Emacs underneath</text>
+
+  <text x="120" y="650" fill="#7f848e" font-size="18" font-family="Inter, Helvetica, Arial, sans-serif">MVP direction: make Emacs legible on day one, then deepen from there.</text>
+</svg>
