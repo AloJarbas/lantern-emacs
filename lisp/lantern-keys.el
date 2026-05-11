@@ -9,6 +9,7 @@
 
 (define-key lantern-leader-map (kbd "SPC") #'lantern/command-palette)
 (define-key lantern-leader-map (kbd "w") #'lantern/welcome)
+(define-key lantern-leader-map (kbd "c") #'lantern/command-center)
 (define-key lantern-leader-map (kbd "f") #'lantern/find-file)
 (define-key lantern-leader-map (kbd "s") #'lantern/search)
 (define-key lantern-leader-map (kbd "b") #'consult-buffer)
@@ -25,6 +26,7 @@
     "C-c l" "Lantern"
     "C-c l SPC" "command palette"
     "C-c l w" "welcome"
+    "C-c l c" "command center"
     "C-c l f" "find file"
     "C-c l s" "search"
     "C-c l b" "buffers"

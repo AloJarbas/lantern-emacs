@@ -7,11 +7,12 @@
   (load-file (expand-file-name "init.el" root)))
 
 (dolist (feature '(lantern lantern-core lantern-ui lantern-completion
-                           lantern-project lantern-prog lantern-onboarding lantern-keys))
+                           lantern-project lantern-prog lantern-command-center
+                           lantern-onboarding lantern-keys))
   (unless (featurep feature)
     (error "Missing feature: %s" feature)))
 
-(dolist (fn '(lantern/welcome lantern/find-file lantern/search
+(dolist (fn '(lantern/welcome lantern/command-center lantern/find-file lantern/search
                lantern/doctor lantern/command-palette lantern/open-config))
   (unless (fboundp fn)
     (error "Missing function: %s" fn)))

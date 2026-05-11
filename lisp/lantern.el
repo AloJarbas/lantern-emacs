@@ -5,6 +5,7 @@
 (require 'lantern-completion)
 (require 'lantern-project)
 (require 'lantern-prog)
+(require 'lantern-command-center)
 (require 'lantern-onboarding)
 (require 'lantern-keys)
 

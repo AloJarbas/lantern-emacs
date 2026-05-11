@@ -24,6 +24,7 @@ The bet:
 - isolated launcher via `./bin/lantern`
 - repo-local package/cache state in `.local/`
 - first-run welcome buffer with clickable actions
+- real command center on `C-c l c` for recent projects, docs, diagnostics, git, and language actions
 - command palette on `M-SPC`
 - discoverable leader map on `C-c l` with `which-key`
 - Vertico + Orderless + Marginalia + Consult + Embark for navigation/completion
@@ -69,16 +70,17 @@ When Lantern starts without a file, it opens a welcome buffer instead of dumping
 
 Use these immediately:
 
-- `M-SPC` — command palette (`M-x`, but easier to reach and easier to remember)
-- `C-c l` — Lantern keymap; `which-key` expands it for you
-- `C-c l f` — find file (project-aware when possible)
-- `C-c l s` — search project text with `consult-ripgrep`
-- `C-c l b` — switch buffer
-- `C-c l p` — switch project
-- `C-c l g` — open Magit
-- `C-c l d` — run Lantern doctor
-- `C-c l w` — reopen the welcome screen
-- `C-.` — Embark actions on the current minibuffer candidate
+- `M-SPC`: command palette (`M-x`, but easier to reach and easier to remember)
+- `C-c l`: Lantern keymap; `which-key` expands it for you
+- `C-c l c`: command center for the common day-one actions in one place
+- `C-c l f`: find file (project-aware when possible)
+- `C-c l s`: search project text with `consult-ripgrep`
+- `C-c l b`: switch buffer
+- `C-c l p`: switch project
+- `C-c l g`: open Magit
+- `C-c l d`: run Lantern doctor
+- `C-c l w`: reopen the welcome screen
+- `C-.`: Embark actions on the current minibuffer candidate
 
 ## Bootstrap and verification
 
@@ -98,16 +100,17 @@ Lantern does **not** auto-install language servers yet. It wires the editor side
 
 ## Project layout
 
-- `early-init.el` — early startup settings
-- `init.el` — entrypoint
-- `lisp/lantern-core.el` — bootstrap, defaults, doctor, filesystem layout
-- `lisp/lantern-ui.el` — theme and UI polish
-- `lisp/lantern-completion.el` — minibuffer + in-buffer completion stack
-- `lisp/lantern-project.el` — project, file, search, Git ergonomics
-- `lisp/lantern-prog.el` — syntax, coding defaults, Eglot, common modes
-- `lisp/lantern-onboarding.el` — welcome screen and first-run flow
-- `lisp/lantern-keys.el` — keybindings and discoverability
-- `scripts/verify.el` — batch smoke test
+- `early-init.el`: early startup settings
+- `init.el`: entrypoint
+- `lisp/lantern-core.el`: bootstrap, defaults, doctor, filesystem layout
+- `lisp/lantern-ui.el`: theme and UI polish
+- `lisp/lantern-completion.el`: minibuffer + in-buffer completion stack
+- `lisp/lantern-project.el`: project, file, search, Git ergonomics
+- `lisp/lantern-prog.el`: syntax, coding defaults, Eglot, common modes
+- `lisp/lantern-command-center.el`: the all-in-one command hub for projects, docs, git, diagnostics, and language actions
+- `lisp/lantern-onboarding.el`: welcome screen and first-run flow
+- `lisp/lantern-keys.el`: keybindings and discoverability
+- `scripts/verify.el`: batch smoke test
 
 ## Rough edges on purpose
 
@@ -124,4 +127,4 @@ What is still rough:
 
 ## Near-term next move
 
-Build a real “command center” layer: recent projects, docs lookup, diagnostics, git actions, and language actions in one discoverable transient/menu instead of scattering them across raw commands.
+Add guided language-server install helpers or doctor-driven fix suggestions for the common stacks, so the first real coding session goes smoother after the UI onboarding is done.
