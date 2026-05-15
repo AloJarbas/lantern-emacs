@@ -13,7 +13,11 @@
     (error "Missing feature: %s" feature)))
 
 (dolist (fn '(lantern/welcome lantern/command-center lantern/find-file lantern/search
-               lantern/doctor lantern/command-palette lantern/open-config))
+               lantern/doctor lantern/command-palette lantern/open-config
+               lantern/toggle-theme lantern/increase-font-size
+               lantern/decrease-font-size lantern/reset-font-size
+               lantern/new-tab lantern/rename-tab lantern/close-tab
+               lantern/next-tab lantern/previous-tab))
   (unless (fboundp fn)
     (error "Missing function: %s" fn)))
 

@@ -11,15 +11,19 @@
 
 (defun lantern--command-center-button (label action help)
   (insert "  ")
-  (insert-text-button label
+  (insert-text-button (format " %s " label)
+                      'face 'lantern-ui-button-face
                       'follow-link t
                       'help-echo help
                       'action (lambda (_button) (call-interactively action)))
   (insert "\n"))
 
 (defun lantern--command-center-heading (title)
-  (insert (propertize title 'face '(:weight bold :height 1.15)))
+  (insert (propertize title 'face 'lantern-ui-section-face))
   (insert "\n"))
+
+(defun lantern--command-center-keycap (text)
+  (propertize (format " %s " text) 'face 'lantern-ui-keycap-face))
 
 (defun lantern--known-project-roots ()
   "Return known project roots, newest first when available."
@@ -117,7 +121,8 @@
                                   'action (lambda (_button)
                                             (lantern/find-file-in-known-project root)))
               (insert (format "  —  %s\n" root)))))
-      (insert "  No project history yet. Open a few repos and this section fills itself in.\n")))
+      (insert (propertize "  No project history yet. Open a few repos and this section fills itself in.\n"
+                          'face 'lantern-ui-note-face))))
   (insert "\n"))
 
 (defun lantern--insert-recent-file-shortcuts ()
@@ -132,7 +137,7 @@
                                 'help-echo file
                                 'action (lambda (_button) (find-file file)))
             (insert (format "  —  %s\n" (abbreviate-file-name file)))))
-      (insert "  No recent files yet.\n")))
+      (insert (propertize "  No recent files yet.\n" 'face 'lantern-ui-note-face))))
   (insert "\n"))
 
 (defun lantern/command-center ()
@@ -142,9 +147,14 @@
     (with-current-buffer buffer
       (read-only-mode -1)
       (erase-buffer)
-      (setq-local line-spacing 0.15)
-      (insert (propertize "Lantern command center\n" 'face '(:height 1.45 :weight bold)))
-      (insert "One place for the commands you need before muscle memory exists.\n\n")
+      (lantern/ui-prepare-special-buffer)
+      (insert (propertize "Lantern command center\n" 'face 'lantern-ui-title-face))
+      (insert (propertize "One place for the commands you need before muscle memory exists.\n\n"
+                          'face 'lantern-ui-subtitle-face))
+      (insert (format "  Theme: %s   Font: %s   Tabs: %s\n\n"
+                      (propertize (lantern/current-theme-name) 'face 'lantern-ui-metric-face)
+                      (propertize (format "%d" lantern-current-font-height) 'face 'lantern-ui-metric-face)
+                      (propertize (if (bound-and-true-p tab-bar-mode) "on" "off") 'face 'lantern-ui-metric-face)))
 
       (lantern--command-center-heading "Projects")
       (lantern--command-center-button "Switch project" #'lantern/switch-project "Jump to another known project")
@@ -160,8 +170,19 @@
       (lantern--command-center-heading "Docs and help")
       (lantern--command-center-button "Open README" #'lantern/open-readme "Read Lantern's quick start and layout")
       (lantern--command-center-button "Language guide" #'lantern/open-language-guide "See language-server setup notes")
-      (lantern--command-center-button "Help at point" #'lantern/helpful-at-point-or-symbol "Explain the symbol at point")
+      (lantern--command-center-button "Welcome screen" #'lantern/welcome "Reopen the onboarding dashboard")
       (lantern--command-center-button "Edit Lantern config" #'lantern/open-config "Browse the config root in Dired")
+      (lantern--command-center-button "Help at point" #'lantern/helpful-at-point-or-symbol "Explain the symbol at point")
+      (insert "\n")
+
+      (lantern--command-center-heading "Appearance")
+      (lantern--command-center-button "Toggle theme" #'lantern/toggle-theme "Switch between Lantern's dark and light themes")
+      (lantern--command-center-button "Bigger text" #'lantern/increase-font-size "Increase the editor font size")
+      (lantern--command-center-button "Smaller text" #'lantern/decrease-font-size "Decrease the editor font size")
+      (lantern--command-center-button "Reset text" #'lantern/reset-font-size "Reset the editor font size")
+      (lantern--command-center-button "New tab" #'lantern/new-tab "Open a fresh tab for another task")
+      (lantern--command-center-button "Rename tab" #'lantern/rename-tab "Give the current tab a clearer label")
+      (lantern--command-center-button "Close tab" #'lantern/close-tab "Close the current tab")
       (insert "\n")
 
       (lantern--command-center-heading "Git and diagnostics")
@@ -179,15 +200,22 @@
       (lantern--command-center-button "Format buffer" #'lantern/eglot-format-buffer "Format the current buffer through the language server")
       (insert "\n")
 
-      (insert (propertize "Fast keys\n" 'face '(:weight bold)))
-      (insert "  C-c l c  reopen this command center\n")
-      (insert "  M-SPC    raw command palette\n")
-      (insert "  g        refresh this screen\n")
-      (insert "  q        close this screen\n")
+      (insert (propertize "Fast keys\n" 'face 'lantern-ui-section-face))
+      (insert (format "  %s  reopen this command center\n" (lantern--command-center-keycap "C-c l c")))
+      (insert (format "  %s  toggle theme\n" (lantern--command-center-keycap "C-c l t")))
+      (insert (format "  %s  bigger text\n" (lantern--command-center-keycap "C-c l =")))
+      (insert (format "  %s  smaller text\n" (lantern--command-center-keycap "C-c l -")))
+      (insert (format "  %s  reset text\n" (lantern--command-center-keycap "C-c l 0")))
+      (insert (format "  %s  new tab\n" (lantern--command-center-keycap "C-c l T")))
+      (insert (format "  %s  next tab\n" (lantern--command-center-keycap "C-c l ]")))
+      (insert (format "  %s  previous tab\n" (lantern--command-center-keycap "C-c l [")))
+      (insert (format "  %s  raw command palette\n" (lantern--command-center-keycap "M-SPC")))
+      (insert (format "  %s  refresh this screen\n" (lantern--command-center-keycap "g")))
+      (insert (format "  %s  close this screen\n" (lantern--command-center-keycap "q")))
       (goto-char (point-min))
       (special-mode)
       (use-local-map (copy-keymap special-mode-map))
       (local-set-key (kbd "g") #'lantern/command-center))
-    (pop-to-buffer buffer)))
+    (lantern/ui-display-buffer buffer)))
 
 (provide 'lantern-command-center)

@@ -25,6 +25,7 @@ The bet:
 - repo-local package/cache state in `.local/`
 - first-run welcome buffer with clickable actions
 - real command center on `C-c l c` for recent projects, docs, diagnostics, git, and language actions
+- quick appearance controls for theme, font size, and tab workflow
 - command palette on `M-SPC`
 - discoverable leader map on `C-c l` with `which-key`
 - Vertico + Orderless + Marginalia + Consult + Embark for navigation/completion
@@ -73,6 +74,10 @@ Use these immediately:
 - `M-SPC`: command palette (`M-x`, but easier to reach and easier to remember)
 - `C-c l`: Lantern keymap; `which-key` expands it for you
 - `C-c l c`: command center for the common day-one actions in one place
+- `C-c l t`: toggle dark/light theme
+- `C-c l =`: bigger text
+- `C-c l -`: smaller text
+- `C-c l T`: open a new tab
 - `C-c l f`: find file (project-aware when possible)
 - `C-c l s`: search project text with `consult-ripgrep`
 - `C-c l b`: switch buffer

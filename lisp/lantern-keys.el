@@ -19,6 +19,15 @@
 (define-key lantern-leader-map (kbd "g") #'magit-status)
 (define-key lantern-leader-map (kbd "d") #'lantern/doctor)
 (define-key lantern-leader-map (kbd "e") #'lantern/open-config)
+(define-key lantern-leader-map (kbd "t") #'lantern/toggle-theme)
+(define-key lantern-leader-map (kbd "=") #'lantern/increase-font-size)
+(define-key lantern-leader-map (kbd "-") #'lantern/decrease-font-size)
+(define-key lantern-leader-map (kbd "0") #'lantern/reset-font-size)
+(define-key lantern-leader-map (kbd "T") #'lantern/new-tab)
+(define-key lantern-leader-map (kbd "R") #'lantern/rename-tab)
+(define-key lantern-leader-map (kbd "W") #'lantern/close-tab)
+(define-key lantern-leader-map (kbd "]") #'lantern/next-tab)
+(define-key lantern-leader-map (kbd "[") #'lantern/previous-tab)
 (define-key lantern-leader-map (kbd "l") #'eglot)
 
 (with-eval-after-load 'which-key
@@ -36,6 +45,15 @@
     "C-c l g" "git"
     "C-c l d" "doctor"
     "C-c l e" "edit config"
+    "C-c l t" "toggle theme"
+    "C-c l =" "bigger text"
+    "C-c l -" "smaller text"
+    "C-c l 0" "reset text"
+    "C-c l T" "new tab"
+    "C-c l R" "rename tab"
+    "C-c l W" "close tab"
+    "C-c l [" "previous tab"
+    "C-c l ]" "next tab"
     "C-c l l" "start LSP"))
 
 (provide 'lantern-keys)
